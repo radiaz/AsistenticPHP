@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+/*estilos generales propios diferentes a los de la plantilla*/
+
+/*estilo para los mensajes de error del lado del servidor*/
+#menerr{
+color:red;
+
+
+
+}
