@@ -22,7 +22,7 @@ if(isset($_GET["id"])){
 				$id_asignacion=$datos['id_asignacion'];
 			}
 			$fecha = $f->get_fecha();
-			$sql="insert into asistencia (id_alumno,id_asignacion,fecha) values ('".$_GET['id']."','".$id_asignacion."','".$fecha." ".$hora."');";
+			$sql="insert into asistencia (id_alumno,id_asignacion,fecha,hora) values ('".$_GET['id']."','".$id_asignacion."','".$fecha."','".$hora."');";
 			
 			$db->set_query($sql);
 			
