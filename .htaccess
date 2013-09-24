@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^asistentic.com$
+RewriteRule ^(.*)$ "http\:\/\/www\.asistentic\.com\/$1" [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+ErrorDocument 404 http://www.asistentic.com/404
+
+php_flag display_errors 1
+php_value error_reporting 7
+php_value display_errors On
+
+php_value session.cookie_lifetime 3600
