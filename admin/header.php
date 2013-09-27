@@ -64,7 +64,7 @@
                 	<li><a href="docentes">Docentes</a></li>
                         <li><a href="institucion">Instituci&oacute;n</a></li>
                         <li><a href="#">Reportes</a></li>
-                        <li><a href="#">Perfil</a></li>                                                 
+                        <li><a href="perfil">Perfil</a></li>                                                 
                     </ul>
                     
             
