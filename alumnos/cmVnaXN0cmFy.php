@@ -22,7 +22,7 @@ if(isset($_GET["id"])){
 				$id_asignacion=$datos['id_asignacion'];
 			}
 			$fecha = $f->get_fecha();
-			$sql="insert into asistencia (id_alumno,id_asignacion,fecha,hora) values ('".$_GET['id']."','".$id_asignacion."','".$fecha."','".$hora."');";
+			$sql="insert into asistencia (id_alumno,id_asignacion,fecha,hora,asistencia) values ('".$_GET['id']."','".$id_asignacion."','".$fecha."','".$hora."',1);";
 			
 			$db->set_query($sql);
 			
@@ -31,8 +31,28 @@ if(isset($_GET["id"])){
 			$resultado=$db->get_num_rows();
 			
 			if ($resultado==-1){
-				header("location:dmVyYWx1bW5v?id=".$_GET['id']."&error=3");
+				
+				echo 'no se inserto la, asistencia por lo tanto ya hay registros asi que hay que hacer un update';
+				//header("location:dmVyYWx1bW5v?id=".$_GET['id']."&error=3");
 			}else{
+				$sql="call select_est(".$_GET['id'].")";
+				$db->set_query($sql);
+				$db->exec_query("../");
+				$datos1 = $db->get_values();
+				if ($datos1[0][0] != "empty"){
+				$sql="insert into asistencia(id_alumno,id_asignacion,fecha,hora,asistencia) values";
+				$x = 0;
+				foreach ($datos1 as $datos1){
+					if ($x != 0){
+						$sql .= ",";
+						
+					}
+					
+					$sql .= "(".$datos1['alum'].",".$id_asignacion.",'".$fecha."','".$hora."',-1)";
+					
+				}
+				echo $sql;
+				echo '<br>si se inserto por lo tanto debo revisar como cojer los datos de los demas estudiantes';
 				?>
 <!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 <script language='javascript'>
@@ -40,6 +60,7 @@ if(isset($_GET["id"])){
 	location.href='dmVyYWx1bW5v?id=<?php echo $_GET['id'] ?>';
 </script>
 <?php 
+				}
 			}
 
 		}else{
