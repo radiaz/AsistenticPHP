@@ -8,11 +8,11 @@ if(isset($_GET["id"])){
 	if ($_GET["id"] != ""){
 
 		$hora=$f->get_hora();
-		$dia=$f->get_dia();	
+		$dia=$f->get_dia();
 		$sql="SELECT asign_academica.id_asignacion from asign_academica,alumnos
-		where asign_academica.id_docente = '".$_SESSION['id']."'
-		and (".$dia." = 1 and hora_inicio_".$dia."<='".$hora."' and hora_fin_".$dia.">'".$hora."')
-		and alumnos.id_grupo = asign_academica.id_grupo and alumnos.id_alumno = '".$_GET['id']."';";
+				where asign_academica.id_docente = '".$_SESSION['id']."'
+						and (".$dia." = 1 and hora_inicio_".$dia."<='".$hora."' and hora_fin_".$dia.">'".$hora."')
+								and alumnos.id_grupo = asign_academica.id_grupo and alumnos.id_alumno = '".$_GET['id']."';";
 
 		$db->set_query($sql);
 		$db->exec_query("../");
@@ -23,15 +23,15 @@ if(isset($_GET["id"])){
 			}
 			$fecha = $f->get_fecha();
 			$sql="insert into asistencia (id_alumno,id_asignacion,fecha,hora,asistencia) values ('".$_GET['id']."','".$id_asignacion."','".$fecha."','".$hora."',1);";
-			
-			$db->set_query($sql);
-			
-			$db->exec_query("../");
-			
-			$resultado=$db->get_num_rows();
-			
-			if ($resultado==-1){
 				
+			$db->set_query($sql);
+				
+			$db->exec_query("../");
+				
+			$resultado=$db->get_num_rows();
+				
+			if ($resultado==-1){
+
 				echo 'no se inserto la, asistencia por lo tanto ya hay registros asi que hay que hacer un update';
 				//header("location:dmVyYWx1bW5v?id=".$_GET['id']."&error=3");
 			}else{
@@ -41,20 +41,20 @@ if(isset($_GET["id"])){
 				$datos1 = $db->get_values();
 				if ($datos1[0][0] != "empty"){
 				$sql="insert into asistencia(id_alumno,id_asignacion,fecha,hora,asistencia) values";
-				$x = 0;
-				foreach ($datos1 as $datos1){
-					if ($x != 0){
-						$sql .= ",";
-						
+					$x = 0;
+					foreach ($datos1 as $datos1){
+				 
+						if ($x != 0){
+							$sql .= ",";
+						}
+							
+						$sql .= "(".$datos1['id_alumno'].",".$id_asignacion.",'".$fecha."','".$hora."',-1)";
+						$x++;
 					}
-					
-					$sql .= "(".$datos1['alum'].",".$id_asignacion.",'".$fecha."','".$hora."',-1)";
-					
-				}
-				echo $sql;
-				echo '<br>si se inserto por lo tanto debo revisar como cojer los datos de los demas estudiantes';
-				exit;
-				?>
+					echo $sql;
+					echo '<br>si se inserto por lo tanto debo revisar como cojer los datos de los demas estudiantes';
+					exit;
+					?>
 <!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 <script language='javascript'>
 	alert('La asistencia se ha agregado correctamente')
