@@ -23,17 +23,32 @@ if(isset($_GET["id"])){
 			}
 			$fecha = $f->get_fecha();
 			$sql="insert into asistencia (id_alumno,id_asignacion,fecha,hora,asistencia) values ('".$_GET['id']."','".$id_asignacion."','".$fecha."','".$hora."',1);";
-				
-			$db->set_query($sql);
-				
-			$db->exec_query("../");
-				
-			$resultado=$db->get_num_rows();
-				
-			if ($resultado==-1){
 
-				echo 'no se inserto la, asistencia por lo tanto ya hay registros asi que hay que hacer un update';
-				//header("location:dmVyYWx1bW5v?id=".$_GET['id']."&error=3");
+			$db->set_query($sql);
+
+			$db->exec_query("../");
+
+			$resultado=$db->get_num_rows();
+
+			if ($resultado==-1){
+				$sql="update asistencia set hora = '".$hora."',asistencia = 1 where id_alumno = ".$_GET['id']." and id_asignacion = ".$id_asignacion." and fecha = '".$fecha."'";
+				$db->set_query($sql);
+				$db->exec_query("../");
+				$resultado=$db->get_num_rows();
+				if ($resultado==0){
+					header("location:dmVyYWx1bW5v?id=".$_GET['id']."&error=2");
+				}else{
+						
+					?>
+<!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
+<script language='javascript'>
+						alert('La asistencia se ha agregado correctamente')
+						location.href='dmVyYWx1bW5v?id=<?php echo $_GET['id'] ?>';
+					</script>
+<?php 
+	
+				}
+
 			}else{
 				$sql="call select_est(".$_GET['id'].")";
 				$db->set_query($sql);
@@ -41,9 +56,9 @@ if(isset($_GET["id"])){
 				$datos1 = $db->get_values();
 				if ($datos1[0][0] != "empty"){
 				$sql="insert into asistencia(id_alumno,id_asignacion,fecha,hora,asistencia) values";
-					$x = 0;
-					foreach ($datos1 as $datos1){
-				 
+				$x = 0;
+				foreach ($datos1 as $datos1){
+			
 						if ($x != 0){
 							$sql .= ",";
 						}
@@ -51,9 +66,18 @@ if(isset($_GET["id"])){
 						$sql .= "(".$datos1['id_alumno'].",".$id_asignacion.",'".$fecha."','".$hora."',-1)";
 						$x++;
 					}
-					echo $sql;
-					echo '<br>si se inserto por lo tanto debo revisar como cojer los datos de los demas estudiantes';
-					exit;
+						
+					$db->set_query($sql);
+						
+					$db->exec_query("../");
+						
+					$resultado=$db->get_num_rows();
+						
+					if ($resultado==-1){
+						header("location:dmVyYWx1bW5v?id=".$_GET['id']."&error=3");
+					}
+						
+						
 					?>
 <!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 <script language='javascript'>
