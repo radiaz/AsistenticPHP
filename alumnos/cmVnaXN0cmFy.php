@@ -53,6 +53,7 @@ if(isset($_GET["id"])){
 				}
 				echo $sql;
 				echo '<br>si se inserto por lo tanto debo revisar como cojer los datos de los demas estudiantes';
+				exit;
 				?>
 <!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 <script language='javascript'>
