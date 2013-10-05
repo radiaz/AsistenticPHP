@@ -31,7 +31,7 @@ if (isset($_POST['rol'])){
 				if ($r[0][0]!="empty") {
 
 				 $c->create_session($r[0]['prinom_doc'], $r[0]['segnom_doc'], $r[0]['priape_doc'], $r[0]['segape_doc'], $r[0]['id_docente'], "admin");
-				 header("location:/admin/");
+				 header("location:admin/");
 
 				}else{
 
@@ -54,7 +54,7 @@ if (isset($_POST['rol'])){
 				if ($r[0][0]!="empty") {
 				
 					$c->create_session($r[0]['prinom_acu'], $r[0]['segnom_acu'], $r[0]['priape_acu'], $r[0]['segape_acu'], $r[0]['id_acudiente'], "acudiente");
-					header("location:/acudiente/");
+					header("location:acudiente/");
 				
 				}else{
 				
@@ -79,7 +79,7 @@ if (isset($_POST['rol'])){
 				if ($r[0][0]!="empty") {
 				
 					$c->create_session($r[0]['prinom_doc'], $r[0]['segnom_doc'], $r[0]['priape_doc'], $r[0]['segape_doc'], $r[0]['id_docente'], "docente");
-					header("location:/docentes");
+					header("location:docente");
 				
 				}else{
 				
