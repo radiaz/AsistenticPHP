@@ -50,7 +50,7 @@
 
 <body>
 	<div class="wrapper">	
-                    <a href="/acudiente/" id="logo"><img src="../img/banner.png" alt="AsistenTIC" title="AsistenTIC" width="292" height="140" /></a>
+                    <a href="/docentes/" id="logo"><img src="../img/banner.png" alt="AsistenTIC" title="AsistenTIC" width="292" height="140" /></a>
                    
                    <!--These are just samples, use your own icons. If you use larger ones, make sure too change the css-file to fit them in.
                        Dont´t forget to place your links -->
@@ -59,7 +59,7 @@
                     </div>
                     
                     <ul id="nav" class="main">                                                
-                        <li><a href="alumno">Reportes</a></li>
+                        <li><a href="reportes">Reportes</a></li>
                 	    <li><a href="perfil">Perfil</a></li>                                                                         
                     </ul>
                                       

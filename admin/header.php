@@ -63,7 +63,7 @@
                         <li><a href="alumnos">Alumnos</a></li>
                 	<li><a href="docentes">Docentes</a></li>
                         <li><a href="institucion">Instituci&oacute;n</a></li>
-                        <li><a href="#">Reportes</a></li>
+                        <li><a href="reportes">Reportes</a></li>
                         <li><a href="perfil">Perfil</a></li>                                                 
                     </ul>
                     

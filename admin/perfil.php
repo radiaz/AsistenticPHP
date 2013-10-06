@@ -20,16 +20,16 @@ $db = new DataBase();
 		</thead>
 		<tbody>
 			<tr>
-				<td><b>Nombre:</b></td>
-				<td><?php echo $_SESSION['prinom'].' '.$_SESSION['segnom'].' '.$_SESSION['priape'].' '.$_SESSION['segape']; ?></td>
+				<td><label><b>Nombre:</b></label></td>
+				<td><label class="input_full"><?php echo $_SESSION['prinom'].' '.$_SESSION['segnom'].' '.$_SESSION['priape'].' '.$_SESSION['segape']; ?></label></td>
 			</tr>
 			<tr>
-				<td><b>Correo:</b></td>
+				<td><label><b>Correo:</b></label></td>
 					<?php
 						$consulta = mysql_query("SELECT email_doc FROM docentes where id_docente = ".$_SESSION['id']." ");											
 						while ($res = mysql_fetch_array($consulta)){				
                 	?>
-				<td><?php echo $res[0] ?></td>
+				<td><label class="input_full"><?php echo $res[0] ?></label></td>
 					<?php } ?>				
 			</tr>
 		</tbody>
