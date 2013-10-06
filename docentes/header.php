@@ -60,7 +60,7 @@
                     
                     <ul id="nav" class="main">                                                
                         <li><a href="alumno">Reportes</a></li>
-                	    <li><a href="#">Perfil</a></li>                                                                         
+                	    <li><a href="perfil">Perfil</a></li>                                                                         
                     </ul>
                                       
            </div><!--end of wrapper div-->    
