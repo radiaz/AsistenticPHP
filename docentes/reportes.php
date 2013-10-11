@@ -14,13 +14,18 @@ include ("header.php");
 				<td><label><b>Reporte de Asistencias</b></label></td>								
 			</tr>
 			<tr>
-				<td><a class="button" href="ver-asistencias">Consultar Asistencias</a></td>							
+				<td><input style="border:medium none;	background:url(../img/asistencia.png) no-repeat center center; height:120px; width:120px; cursor:pointer;" onclick="location.href='ver-asistencias'" name="asistencias" type="button" id="asistencias" title="Reporte de Asitencias" value="" /></td>
 			</tr>
 			<tr>
 				<td><label><b>Reporte de Observaciones</b></label></td>
 			</tr>
 			<tr>							
-				<td><a class="button" href="ver-observaciones">Consultar Observaciones</a></td>				
+				<td><input style="border:medium none;	background:url(../img/observaciones.png) no-repeat center center; height:120px; width:120px; cursor:pointer;" onclick="location.href='ver-observaciones'" name="observaciones" type="button" id="observaciones" title="Reporte de Observaciones" value="" /></td>				
+			</tr>
+			<tr>
+				<td>
+					<input style="border:medium none;	background:url(../img/back.png) no-repeat center center; height:64px; width:64px; cursor:pointer;" name="Volver" type="button" id="salir" title="Volver" onclick="window.history.back()" value="" />
+				</td>
 			</tr>	
 		</tbody>
 	</table>    	

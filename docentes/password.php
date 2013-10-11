@@ -21,12 +21,12 @@ $db = new DataBase();
 		</thead>
 		<tbody>
 			<tr>
-				<td><b>Nueva Clave:</b></td>
-				<td><input type="password" size="30" name="clave" id="clave" /></td>
+				<td><label for="clave"><b>Nueva Clave:</b></label></td>
+				<td><input type="password" size="30" name="clave" id="clave" class="input_full" /></td>
 			</tr>
 			<tr>
-				<td><b>Repita la Nueva Clave:</b></td>					
-				<td><input type="password" size="30" name="rclave" id="rclave" /></td>									
+				<td><label for="rclave"><b>Repita la Nueva Clave:</b></label></td>					
+				<td><input type="password" size="30" name="rclave" id="rclave" class="input_full" /></td>									
 			</tr>
 		</tbody>
 
