@@ -28,7 +28,7 @@ $f = new funciones();
 				}else{
 					?> <!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 					<script language='javascript'>
-															alert('No se encuentran estudiantes registrados en este grupo')
+															alert('No se encuentra el estudiante')
 															location.href='ver-observaciones';
 														</script> <?php 
 		
@@ -52,14 +52,15 @@ $f = new funciones();
 				foreach ($datos1 as $datos1){
 					echo '<tr><td>'.$datos1['observacion'].'</td><td>'.$datos1['fecha'].'</td>';
 					
-					$query2 = "select prinom_doc,segnom_doc,priape_doc,segape_doc from asistencia where id_docente = ".$datos1['id_docente']."";
+					$query2 = "select prinom_doc,segnom_doc,priape_doc,segape_doc from docentes where id_docente = ".$datos1['id_docente']."";
+					
 					$db->set_query($query2);
 					$db->exec_query("../");
 					$datos2 = $db->get_values();
 					if ($datos2[0][0] != "empty"){
 						foreach ($datos2 as $datos2){
 
-							echo '<td>'.$datos['prinom_doc'].' '.$datos['segnom_doc'].' '.$datos['priape_doc'].' '.$datos['segape_doc'].'</td>';
+							echo '<td>'.$datos2['prinom_doc'].' '.$datos2['segnom_doc'].' '.$datos2['priape_doc'].' '.$datos2['segape_doc'].'</td>';
 
 						}
 					}
@@ -70,7 +71,7 @@ $f = new funciones();
 				?>
 			<!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 			<script language='javascript'>
-										alert('No se encuentran estudiantes registrados en este grupo')
+										alert('El alumno seleccionado no presenta observaciones para el mes')
 										location.href='ver-observaciones';
 									</script>
 			<?php 
@@ -80,10 +81,7 @@ $f = new funciones();
 
 		<tfoot>
 			<tr>
-				<td align="center" colspan="2"><a class="button" href="mod-perfil">Modificar
-						Perfil</a>&nbsp;&nbsp;&nbsp; <a class="button" href="password">Cambiar
-						Contrase&ntilde;a</a>
-				</td>
+				
 			</tr>
 		</tfoot>
 	</table>

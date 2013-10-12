@@ -72,10 +72,7 @@ $f = new funciones();
 
 		<tfoot>
 			<tr>
-				<td align="center" colspan="2">
-					<a class="button" href="mod-perfil">Modificar Perfil</a>&nbsp;&nbsp;&nbsp;
-				    <a class="button" href="password">Cambiar Contrase&ntilde;a</a>
-				</td>	
+					
 			</tr>
 		</tfoot>
 	</table>
