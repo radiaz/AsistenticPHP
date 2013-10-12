@@ -2,7 +2,6 @@
 include "validar_session.php";
 $title="Reporte de Asistencias - AsistenTIC"; 
 include ("header.php");
-include ("../conexion.php");
 include_once '../clases/database_quering.php';
 $db = new DataBase();
 ?> 
@@ -53,11 +52,19 @@ $db = new DataBase();
         <td>
         <select class="input_full" id="asignatura" name="asignatura">
         <option value="">Seleccione...</option>
-        <?php //Consultamos las asignaturas registradas
-$asign = mysql_query("SELECT * FROM asignaturas"); 
-while($row = mysql_fetch_array($asign)){ ?>
-        <option value="<?php echo $row['id_asignatura'] ?>"><?php echo html_entity_decode($row['nom_asignatura']) ?></option>
-        <?php } ?>
+        <?php
+                            $query = "SELECT * FROM asignaturas";
+                            $db->set_query($query);
+                            $db->exec_query("../");
+                            $datos = $db->get_values(); 
+                            foreach ($datos as $datos){
+                                ?>
+                                <option value="<?php echo $datos['id_asignatura'] ?>">
+                                    <?php echo html_entity_decode($datos['nom_asignatura']) ?>
+                                </option>
+                                <?php
+                            }
+                            ?> 
         </select></td></tr>
 
         <tr><td>Mes:</td>
