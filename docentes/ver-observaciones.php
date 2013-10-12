@@ -1,6 +1,6 @@
 <?php
 include "validar_session.php";
-$title="Asistencias - AsistenTIC";
+$title="Observaciones - AsistenTIC";
 include ("header.php");
 include_once '../clases/database_quering.php';
 include ("../conexion.php");
