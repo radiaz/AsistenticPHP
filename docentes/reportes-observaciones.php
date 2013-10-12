@@ -17,7 +17,7 @@ $f = new funciones();
 	<table align="center">
 		<thead>
 			<tr>
-				<th colspan="2">Observaci&oacutenes <?php echo ' para: '; $query = "select prinom_al,segnom_al,priape_al,segape_al from alumnos where id_alumno = ".$_POST['alumno']."";
+				<th colspan="3">Observaci&oacutenes <?php echo ' para: '; $query = "select prinom_al,segnom_al,priape_al,segape_al from alumnos where id_alumno = ".$_POST['alumno']."";
 				$db->set_query($query);
 				$db->exec_query("../");
 				$datos = $db->get_values();
@@ -71,7 +71,7 @@ $f = new funciones();
 			<!-- Enviamos el mensaje de confirmacion de registro de usuario y direccionamos al formulario nuevamente -->
 			<script language='javascript'>
 										alert('No se encuentran estudiantes registrados en este grupo')
-										location.href='ver-obervaciones';
+										location.href='ver-observaciones';
 									</script>
 			<?php 
 			}

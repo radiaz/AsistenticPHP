@@ -169,7 +169,7 @@ class funciones{
 	 */
 	
 	function get_ano() {
-		date_timezone_set("America/Bogota");
+		date_default_timezone_set("America/Bogota");
 		$this->ano=date("Y");
 		return $this->ano;
 	}
