@@ -41,7 +41,10 @@ echo html_entity_decode($doc['prinom_doc'])." ".html_entity_decode($doc['segnom_
                     <label>
                     <?php $cons = mysql_query("SELECT * FROM asignaturas where id_asignatura = ".$asign['id_asignatura']." "); 
 while($mat = mysql_fetch_array($cons)){
-echo html_entity_decode($mat['nom_asignatura']); }?>                    
+echo html_entity_decode($mat['nom_asignatura']); ?>                    
+                    </label>
+                    <label>
+                    <?php if($asist['asistencia']==1){echo '<img style="margin-bottom :0;" alt="asistio" title="Asisti&oacute" src="../img/check.png" width="20" height="20">';}else {echo '<img style="margin-bottom :0;" alt="asistio" title="No asisti&oacute" src="../img/cancelar.png" width="20" height="20">';} }?>
                     </label>                    
                     </td>
 				</tr>
