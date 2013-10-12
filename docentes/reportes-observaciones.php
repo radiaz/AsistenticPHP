@@ -5,40 +5,36 @@ include ("header.php");
 include_once '../clases/database_quering.php';
 include ("../conexion.php");
 $db = new DataBase();
+$est = $_POST['alumno'];
+$month = $_POST['mes'];
 ?>
 <script
 	src="../js/ajax.js" type="text/javascript"></script>
 
 <div class="wrapper">
 
-	<h2 align="center">Informaci&oacute;n de Perfil</h2>
+	<h2 align="center">Reporte de Observaciones</h2>
 	<table align="center">
 		<thead>
 			<tr>
-				<th colspan="2">Datos Personales</th>
+				<th colspan="2">Datos Recibidos</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td><label><b>Nombre:</b></label></td>
-				<td><label><?php echo $_SESSION['prinom'].' '.$_SESSION['segnom'].' '.$_SESSION['priape'].' '.$_SESSION['segape']; ?></label></td>
+				<td><label><b>Alumno:</b></label></td>
+				<td><label><?php echo $est; ?></label></td>
 			</tr>
 			<tr>
-				<td><label><b>Correo:</b></label></td>
-					<?php
-						$consulta = mysql_query("SELECT email_doc FROM docentes where id_docente = ".$_SESSION['id']." ");											
-						while ($res = mysql_fetch_array($consulta)){				
-                	?>
-				<td><label><?php echo $res[0] ?></label></td>
-					<?php } ?>				
+				<td><label><b>Mes:</b></label></td>					
+				<td><label><?php echo $month; ?></label></td>									
 			</tr>
 		</tbody>
 
 		<tfoot>
 			<tr>
 				<td align="center" colspan="2">
-					<a class="button" href="mod-perfil">Modificar Perfil</a>&nbsp;&nbsp;&nbsp;
-				    <a class="button" href="password">Cambiar Contrase&ntilde;a</a>
+					<input style="border:medium none;	background:url(../img/back.png) no-repeat center center; height:64px; width:64px; cursor:pointer;" name="Volver" type="button" id="salir" title="Volver" onclick="window.history.back()" value="" />
 				</td>	
 			</tr>
 		</tfoot>

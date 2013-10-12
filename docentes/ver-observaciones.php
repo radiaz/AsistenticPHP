@@ -1,51 +1,83 @@
 <?php
 include "validar_session.php";
-$title="Observaciones - AsistenTIC";
+$title="Observaciones de alumnos - AsistenTIC"; 
 include ("header.php");
 include_once '../clases/database_quering.php';
-include ("../conexion.php");
 $db = new DataBase();
-?>
-<script
-	src="../js/ajax.js" type="text/javascript"></script>
+?> 
+<script src="../js/ajax.js" type="text/javascript"></script>
+    <form method="post" action="reportes-observaciones">
+	<div class="wrapper">
+		<h2 align="center">Reporte de Observaciones</h2> 
+        <table align="center">
+        <thead>
+        <tr><th colspan="2">Elija un alumno</th></tr>
+        </thead>
 
-<div class="wrapper">
+        <tbody>
+        <tr><td>Sede:</td>
+        <td><select class="input_full" id="sede" name="sede" onchange="ajax('jorn',sede.value,'jornada.php');" autofocus>                        
+                                      <option value="0">Seleccione la sede...</option>
+                                      <?php
+                            $query = "SELECT * FROM sedes";
+                            $db->set_query($query);
+                            $db->exec_query("../");
+                            $datos = $db->get_values(); 
+                            foreach ($datos as $datos){
+                                ?>
+                                <option value="<?php echo $datos['id_sede'] ?>">
+                                    <?php echo html_entity_decode($datos['nom_sede']) ?>
+                                </option>
+                                <?php
+                            }
+                            ?>                                    
+            </select></td></tr>
 
-	<h2 align="center">Informaci&oacute;n de Perfil</h2>
-	<table align="center">
-		<thead>
-			<tr>
-				<th colspan="2">Datos Personales</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><label><b>Nombre:</b></label></td>
-				<td><label><?php echo $_SESSION['prinom'].' '.$_SESSION['segnom'].' '.$_SESSION['priape'].' '.$_SESSION['segape']; ?></label></td>
-			</tr>
-			<tr>
-				<td><label><b>Correo:</b></label></td>
-					<?php
-						$consulta = mysql_query("SELECT email_doc FROM docentes where id_docente = ".$_SESSION['id']." ");											
-						while ($res = mysql_fetch_array($consulta)){				
-                	?>
-				<td><label><?php echo $res[0] ?></label></td>
-					<?php } ?>				
-			</tr>
-		</tbody>
+        <tr><td>Jornada:</td>
+        <td><div id="jorn"><select class="input_full" id="jornada" name="jornada" disabled="disabled">                        
+                                      <option value="0">...</option>
+                                      </select></div></td></tr>
+ 
+        <tr><td>Grado:</td>
+        <td><div id="grad"><select class="input_full" id="grado" name="grado" disabled="disabled">                        
+                                      <option value="0">...</option>                                    
+            </select></div></td></tr>
 
-		<tfoot>
-			<tr>
-				<td align="center" colspan="2">
-					<a class="button" href="mod-perfil">Modificar Perfil</a>&nbsp;&nbsp;&nbsp;
-				    <a class="button" href="password">Cambiar Contrase&ntilde;a</a>
-				</td>	
-			</tr>
-		</tfoot>
-	</table>
+        <tr><td>Grupo:</td>
+        <td><div id="grup"><select class="input_full" id="grupo" name="grupo" disabled="disabled">                        
+                                      <option value="0">...</option>                                    
+            </select></div></td></tr>
 
-</div>
-<!--end of wrapper-->
+        <tr><td>Alumnos:</td>
+        <td><div id="alum"><select class="input_full" id="alumno" name="alumno" disabled="disabled">                        
+                                      <option value="0">...</option>                                    
+            </select></div></td></tr>
+
+        <tr><td>Mes:</td>
+        <td><div id="alum"><select class="input_full" id="mes" name="mes">                        
+                                      <option value="0">...</option>
+                                      <option value="1">Enero</option>
+                                      <option value="2">Febrero</option>                                    
+                                      <option value="3">Marzo</option>
+                                      <option value="4">Abril</option>
+                                      <option value="5">Mayo</option>
+                                      <option value="6">Junio</option>
+                                      <option value="7">Julio</option>
+                                      <option value="8">Agosto</option>
+                                      <option value="9">Septiembre</option>
+                                      <option value="10">Octubre</option>
+                                      <option value="11">Noviembre</option>
+                                      <option value="12">Diciembre</option>
+            </select></div></td></tr>
+        </tbody>
+
+        <tfoot>
+        <tr><td align="center" colspan="2"><div id="btnalumno"></div></td></tr>
+        </tfoot>                
+        
+        </table>
+        </div><!--end of wrapper-->
+        </form>
 
 <?php 
 include ("footer.php");
