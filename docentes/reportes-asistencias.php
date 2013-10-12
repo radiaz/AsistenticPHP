@@ -17,7 +17,7 @@ $f = new funciones();
 	<table align="center">
 		<thead>
 			<tr>
-				<th colspan="2">Asistencia <?php echo ' Grupo: '.$_POST['id_grupo'].' Mes: '.$_POST['mes'].''; ?></th>
+				<th colspan="2">Asistencia <?php echo ' Grupo: '.$_POST['grupo'].' Mes: '.$_POST['mes'].''; ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -26,7 +26,7 @@ $f = new funciones();
 				<th><label><b>Fallas</b></label></th>
 			</tr>
 			<?php 
-			$query = "Select id_alumno,prinom_al,segnom_al,priape_al,segape_al from alumnos where id_grupo = '".$_POST['id_grupo']."'";
+			$query = "Select id_alumno,prinom_al,segnom_al,priape_al,segape_al from alumnos where grupo = '".$_POST['grupo']."'";
 			$db->set_query($query);
 			$db->exec_query("../");
 			$datos = $db->get_values();
