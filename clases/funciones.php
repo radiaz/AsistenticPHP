@@ -16,7 +16,9 @@ class funciones{
 	private $asunto;
 	private $header;
 	private $mensaje;
-
+        
+        private $ano;
+          
 	private $hora;
 
 	private $fecha;
@@ -161,6 +163,17 @@ class funciones{
 		 
 	}
 
+         /**
+	 * devuelve el ano del servidor para la region de "America/bogota"
+	 * format aaaa
+	 */
+	
+	function get_ano() {
+		date_timezone_set("America/Bogota");
+		$this->ano=date("Y");
+		return $this->ano;
+	}
+        
 	/**
 	 * devuelve la hora del servidor para la region de "America/Bogota";
 	 * formato horas:minutos:segundos
